@@ -15,7 +15,6 @@ filetype plugin indent on
 set laststatus=2
 set showcmd
 
-
 " Remaps
 " Explicitly set the Leader to comma. You can use '\' (the default)
 let mapleader=' '
