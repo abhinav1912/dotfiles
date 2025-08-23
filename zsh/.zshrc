@@ -123,6 +123,7 @@ fi
 
 alias optimage="/google/data/ro/teams/doodles/tools/optimage"
 alias optimage-svg="/google/data/ro/teams/doodles/tools/svgo"
+alias ios-build="blaze build --config=ios_x86_64"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
