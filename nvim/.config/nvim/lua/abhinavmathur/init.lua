@@ -1,4 +1,4 @@
 require("abhinavmathur.remap")
 require("abhinavmathur.lazy")
 
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "tokyonight-night"
