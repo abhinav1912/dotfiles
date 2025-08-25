@@ -12,6 +12,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH="$PATH:$HOME/Developer/flutter/bin"
+export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.4.jdk/Contents/Home
 
 # Set name of the theme to load --- if set to "random", it will

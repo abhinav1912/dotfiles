@@ -1,9 +1,11 @@
 return {
     {
         "neovim/nvim-lspconfig",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             local lspconfig = require('lspconfig')
             lspconfig.sourcekit.setup {
+                filetypes = {"swift", "c", "cpp"},
                 capabilities = {
                     workspace = {
                         didChangeWatchedFiles = {
