@@ -1,4 +1,19 @@
-width = function()
+local function open_win_config_func()
+    local scr_w = vim.opt.columns:get()
+    local scr_h = vim.opt.lines:get()
+    local tree_w = 80
+    local tree_h = math.floor(tree_w * scr_h / scr_w)
+    return {
+	border = "double",
+	relative = "editor",
+	width = tree_w,
+	height = tree_h,
+	col = (scr_w - tree_w) / 2,
+	row = (scr_h - tree_h) / 2
+    }
+end
+
+local function get_width() 
     local winwidth = vim.api.nvim_win_get_width(0)
     print(winwidth)
     if winwidth <= 100 then
@@ -22,8 +37,12 @@ return {
 
     nvimtree.setup({
       view = {
-        width = width,
+        width = get_width,
         relativenumber = true,
+        float = {
+            enable = true,
+            open_win_config = open_win_config_func
+        }
       },
       -- change folder arrow icons
       renderer = {
@@ -60,9 +79,8 @@ return {
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set("n", "<leader>fv", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-    keymap.set("n", "<leader>ff", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-    keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+    keymap.set("n", "<leader>fv", "<cmd>NvimTreeToggle<CR>", { desc = "[f]older [v]iew" }) -- toggle file explorer
+    keymap.set("n", "<leader>ff", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "[f]ind [f]ile in explorer" }) -- toggle file explorer on current file
+    keymap.set("n", "<leader>fr", "<cmd>NvimTreeRefresh<CR>", { desc = "[f]older view [r]efresh" }) -- refresh file explorer
   end,
 }
