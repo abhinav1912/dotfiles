@@ -15,6 +15,16 @@ filetype plugin indent on
 set laststatus=2
 set showcmd
 
+" Wildmenu settings
+set wildmenu
+" set wildmode=list:longest
+
+set smartindent
+set autoindent
+set smarttab
+set noincsearch
+set nohls
+
 " Remaps
 " Explicitly set the Leader to comma. You can use '\' (the default)
 let mapleader=' '
@@ -88,22 +98,12 @@ if IsOnSomeParticularMachine("abhistract.c.googlers.com")
 endif
 
 if IsOnSomeParticularMachine("Abhinavs-MacBook-Air.local")
-    set showmode
-
-    " Wildmenu settings
-    set wildmenu
-    set wildmode=list:longest
-
-    set smartindent
-    set smarttab
+    " set showmode
     set sw=4
     set ts=4
     set softtabstop=4
     set nofoldenable
     set scrolloff=8
 
-    set incsearch
-
-    nmap <leader>bb <c-^><cr>
     inoremap jj <ESC>
 endif
