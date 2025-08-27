@@ -114,17 +114,35 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
+alias optimage="/google/data/ro/teams/doodles/tools/optimage"
+alias optimage-svg="/google/data/ro/teams/doodles/tools/svgo"
+alias ios-build="blaze build --config=ios_x86_64"
 
+dotsync() {
+    dir_name=$PWD
+    cd ~/dotfiles/
+    git pull origin
+    cd $dir_name
+}
+
+dotpush() {
+    if [[ -n $* ]]; then
+        dir_name=$PWD
+        cd ~/dotfiles/
+        git add .
+        git commit -m $1
+        git push origin
+        cd $dir_name
+    else
+        print "Pass the commit message as an arg."
+    fi
+
+}
 # add env variable for the codesearch url opener workaroud
 if [[ -f ~/magic_url_opener.sh ]]; then
   export BROWSER=~/magic_url_opener.sh
 fi
-
-alias optimage="/google/data/ro/teams/doodles/tools/optimage"
-alias optimage-svg="/google/data/ro/teams/doodles/tools/svgo"
-alias ios-build="blaze build --config=ios_x86_64"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
