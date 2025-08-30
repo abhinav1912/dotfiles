@@ -80,7 +80,7 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     keymap.set("n", "<leader>fv", "<cmd>NvimTreeToggle<CR>", { desc = "[f]older [v]iew" }) -- toggle file explorer
-    keymap.set("n", "<leader>ff", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "[f]ind [f]ile in explorer" }) -- toggle file explorer on current file
-    keymap.set("n", "<leader>fr", "<cmd>NvimTreeRefresh<CR>", { desc = "[f]older view [r]efresh" }) -- refresh file explorer
+    keymap.set("n", "<leader>tf", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "[t]ree [f]ind file" }) -- toggle file explorer on current file
+    keymap.set("n", "<leader>tr", "<cmd>NvimTreeRefresh<CR>", { desc = "[t]ree [r]efresh" }) -- refresh file explorer
   end,
 }
