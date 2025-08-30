@@ -137,8 +137,15 @@ dotpush() {
     else
         print "Pass the commit message as an arg."
     fi
-
 }
+
+dotstatus() {
+    dir_name=$PWD
+    cd ~/dotfiles/
+    git status
+    cd $dir_name
+}
+
 # add env variable for the codesearch url opener workaroud
 if [[ -f ~/magic_url_opener.sh ]]; then
   export BROWSER=~/magic_url_opener.sh
