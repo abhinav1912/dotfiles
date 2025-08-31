@@ -7,16 +7,6 @@ return {
         },
         config = function()
             local lspconfig = require('lspconfig')
-            lspconfig.sourcekit.setup {
-                filetypes = {"swift", "c", "cpp"},
-                capabilities = {
-                    workspace = {
-                        didChangeWatchedFiles = {
-                            dynamicRegistration = true,
-                        },
-                    },
-                },
-            }
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP Actions',
                 callback = function(args)
@@ -29,6 +19,12 @@ return {
 
             local keymap = vim.keymap -- for conciseness
             local capabilities = cmp_nvim_lsp.default_capabilities()
+
+            lspconfig.sourcekit.setup {
+                filetypes = {"swift", "c", "cpp"},
+                capabilities = capabilities,
+                cmd = { "sourcekit-lsp" }
+            }
 
             vim.diagnostic.config({
                 signs = {
