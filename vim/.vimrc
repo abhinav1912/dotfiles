@@ -59,6 +59,7 @@ if IsOnSomeParticularMachine("abhistract.c.googlers.com")
   " Load the blaze plugins, with the ,b prefix on all commands.
   " Since we've set the mapleader to ',' above, this should be ,bb in practice
   Glug blaze plugin[mappings]='<leader>b'
+  Glug relatedfiles
 
   " See go/ycm for more details.
   Glug youcompleteme-google
@@ -82,13 +83,6 @@ if IsOnSomeParticularMachine("abhistract.c.googlers.com")
 
   Glug relatedfiles
   nnoremap <leader>rf :RelatedFilesWindow<CR>
-
-  " Enable the corpweb plugin, which allows us to open codesearch from vim
-  Glug corpweb
-  " search in codesearch for the word under the cursor
-  nnoremap <leader>csw :CorpWebCs <cword> <CR>
-  " search in codesearch for the current file
-  nnoremap <leader>csf :CorpWebCsFile<CR>
 
   " Load the Critique integration. Use :h critique for more details
   Glug critique
