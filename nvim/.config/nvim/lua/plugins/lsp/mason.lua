@@ -25,6 +25,7 @@ return {
         })
 
         mason_lspconfig.setup({
+          automatic_enable = false, --enable/remove once v.011 is available on Linux
             -- list of servers for mason to install
             ensure_installed = {
                 "lua_ls",
