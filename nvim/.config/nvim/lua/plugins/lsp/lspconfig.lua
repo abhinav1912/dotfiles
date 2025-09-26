@@ -6,7 +6,6 @@ return {
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
-            local lspconfig = require('lspconfig')
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP Actions',
                 callback = function(args)
@@ -20,12 +19,38 @@ return {
             local keymap = vim.keymap -- for conciseness
             local capabilities = cmp_nvim_lsp.default_capabilities()
 
-            lspconfig.sourcekit.setup {
+            vim.lsp.config("sourcekit", {
                 filetypes = {"swift", "c", "cpp"},
                 capabilities = capabilities,
                 cmd = { "sourcekit-lsp" }
-            }
+            })
 
+
+            vim.lsp.config['lua_ls'] = {
+                -- Command and arguments to start the server.
+                cmd = { 'lua-language-server' },
+
+                -- Filetypes to automatically attach to.
+                filetypes = { 'lua' },
+
+                -- Sets the "root directory" to the parent directory of the file in the
+                -- current buffer that contains either a ".luarc.json" or a
+                -- ".luarc.jsonc" file. Files that share a root directory will reuse
+                -- the connection to the same LSP server.
+                -- Nested lists indicate equal priority, see |vim.lsp.Config|.
+                root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
+
+                -- Specific settings to send to the server. The schema for this is
+                -- defined by the server. For example the schema for lua-language-server
+                -- can be found here https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJIT',
+                        }
+                    }
+                }
+            }
             vim.diagnostic.config({
                 signs = {
                     text = {
@@ -39,6 +64,8 @@ return {
             vim.lsp.config("*", {
                 capabilities = capabilities,
             })
+            vim.lsp.enable("sourcekit")
+            vim.lsp.enable("lua_ls")
         end,
     }
 }
